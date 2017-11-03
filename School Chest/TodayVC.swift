@@ -15,7 +15,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet var eventTable: UITableView!
     
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     var events: JSON = JSON()
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,7 +28,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         ref.child("calendar").observeSingleEvent(of: .value, with: { (snapshot) in
             self.events = JSON(snapshot.value!)
@@ -53,7 +53,20 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return events["day\(section + 1)"]["date"].stringValue
+        let date = events["day\(section + 1)"]["date"].stringValue
+        let today = Date()
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        let todaystr = formatter.string(from: today)
+        let tomorrowstr = formatter.string(from: tomorrow!)
+        if(date == todaystr){
+            return "Today"
+        } else if(date == tomorrowstr){
+            return "Tomorrow"
+        } else{
+            return date
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,6 +75,10 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = eventTable.dequeueReusableCell(withIdentifier: "TodayTVCell")! as! TodayTVCell
+        cell.viewController = self
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        cell.date = formatter.date(from: events["day\(indexPath.section + 1)"]["date"].stringValue) ?? Date()
         cell.events = events
         cell.row = indexPath.section
         cell.eventsCollection.reloadData()
@@ -71,12 +88,12 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.clear
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.flatWhite
+        header.textLabel?.textColor = FlatBlack()
         header.textLabel?.font = UIFont.boldSystemFont(ofSize: 30)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 50
     }
 
     override func didReceiveMemoryWarning() {

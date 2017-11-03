@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03148C551FAAC78200B8D91A /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03148C541FAAC78200B8D91A /* PopupViewController.swift */; };
+		03148C571FAB7FC000B8D91A /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03148C561FAB7FC000B8D91A /* OptionCell.swift */; };
 		031EE3011F05DB30009812CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE3001F05DB30009812CA /* AppDelegate.swift */; };
 		031EE3031F05DB30009812CA /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE3021F05DB30009812CA /* TodayVC.swift */; };
 		031EE3061F05DB30009812CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031EE3041F05DB30009812CA /* Main.storyboard */; };
@@ -14,11 +16,16 @@
 		031EE30B1F05DB30009812CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031EE3091F05DB30009812CA /* LaunchScreen.storyboard */; };
 		031EE3131F05DDC8009812CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 031EE3121F05DDC8009812CA /* GoogleService-Info.plist */; };
 		031EE3191F06D668009812CA /* TodayTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE3181F06D668009812CA /* TodayTVCell.swift */; };
+		037E18AD1FAAB8940083F26D /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E18AC1FAAB8940083F26D /* TabViewController.swift */; };
+		039E100F1FABD3D40057D520 /* CouponVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E100E1FABD3D40057D520 /* CouponVC.swift */; };
+		03BC6F641FA176F300BFB7AE /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC6F631FA176F300BFB7AE /* DonateViewController.swift */; };
 		03FEAB281F2B8D3B009E580D /* TodayCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FEAB271F2B8D3B009E580D /* TodayCVCell.swift */; };
 		8C9CAAC89B2790E5434ACEB6 /* Pods_School_Chest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4699D78755ABDA9C193DF0 /* Pods_School_Chest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03148C541FAAC78200B8D91A /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		03148C561FAB7FC000B8D91A /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		031EE2FD1F05DB30009812CA /* School Chest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "School Chest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		031EE3001F05DB30009812CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031EE3021F05DB30009812CA /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
@@ -28,6 +35,9 @@
 		031EE30C1F05DB31009812CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		031EE3121F05DDC8009812CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		031EE3181F06D668009812CA /* TodayTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTVCell.swift; sourceTree = "<group>"; };
+		037E18AC1FAAB8940083F26D /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		039E100E1FABD3D40057D520 /* CouponVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponVC.swift; sourceTree = "<group>"; };
+		03BC6F631FA176F300BFB7AE /* DonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
 		03FEAB271F2B8D3B009E580D /* TodayCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCVCell.swift; sourceTree = "<group>"; };
 		03FEAB291F2B92E5009E580D /* School Chest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "School Chest.entitlements"; sourceTree = "<group>"; };
 		57F227D2640BBDFC33C7EBBE /* Pods-School Chest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-School Chest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-School Chest/Pods-School Chest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +84,11 @@
 				031EE3181F06D668009812CA /* TodayTVCell.swift */,
 				03FEAB271F2B8D3B009E580D /* TodayCVCell.swift */,
 				031EE3041F05DB30009812CA /* Main.storyboard */,
+				039E100E1FABD3D40057D520 /* CouponVC.swift */,
+				03148C561FAB7FC000B8D91A /* OptionCell.swift */,
+				03148C541FAAC78200B8D91A /* PopupViewController.swift */,
+				037E18AC1FAAB8940083F26D /* TabViewController.swift */,
+				03BC6F631FA176F300BFB7AE /* DonateViewController.swift */,
 				031EE3071F05DB30009812CA /* Assets.xcassets */,
 				031EE3091F05DB30009812CA /* LaunchScreen.storyboard */,
 				031EE30C1F05DB31009812CA /* Info.plist */,
@@ -136,7 +151,7 @@
 						CreatedOnToolsVersion = 9.0;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -223,25 +238,25 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-School Chest/Pods-School Chest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/Pastel/Pastel.framework",
-				"${BUILT_PRODUCTS_DIR}/Persei/Persei.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
-				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pastel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Persei.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -255,10 +270,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				039E100F1FABD3D40057D520 /* CouponVC.swift in Sources */,
+				037E18AD1FAAB8940083F26D /* TabViewController.swift in Sources */,
 				031EE3031F05DB30009812CA /* TodayVC.swift in Sources */,
 				031EE3191F06D668009812CA /* TodayTVCell.swift in Sources */,
 				03FEAB281F2B8D3B009E580D /* TodayCVCell.swift in Sources */,
+				03148C571FAB7FC000B8D91A /* OptionCell.swift in Sources */,
 				031EE3011F05DB30009812CA /* AppDelegate.swift in Sources */,
+				03BC6F641FA176F300BFB7AE /* DonateViewController.swift in Sources */,
+				03148C551FAAC78200B8D91A /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
