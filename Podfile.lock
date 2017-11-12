@@ -2,7 +2,6 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - ESTabBarController-swift (2.4)
   - Firebase/Core (4.0.4):
     - FirebaseAnalytics (= 4.0.2)
     - FirebaseCore (= 4.0.4)
@@ -59,7 +58,6 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
-  - ESTabBarController-swift
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
@@ -79,7 +77,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  ESTabBarController-swift: af496895039ba10ae60bf825473c45f23fc5c8b6
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
@@ -96,6 +93,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 8a2ca1cc3fb4ad4b33aadf21e66631027ff33dac
+PODFILE CHECKSUM: 325f3cdaad033b2f43e2282972182376a90af276
 
 COCOAPODS: 1.3.1

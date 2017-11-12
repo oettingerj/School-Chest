@@ -24,10 +24,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         ref = Database.database().reference()
         
         ref.child("calendar").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -46,6 +43,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         eventTable.sectionFooterHeight = 20
         
         self.view.backgroundColor = GradientColor(.topToBottom, frame: self.view.frame, colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

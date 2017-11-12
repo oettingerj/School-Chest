@@ -13,6 +13,5 @@ target 'School Chest' do
   pod 'FirebaseUI/Storage'
   pod 'SwiftyJSON'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
-  pod 'ESTabBarController-swift'
   pod 'Presentr'
 end

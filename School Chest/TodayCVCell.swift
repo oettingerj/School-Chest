@@ -29,7 +29,17 @@ class TodayCVCell: UICollectionViewCell {
         title.adjustsFontSizeToFitWidth = true
         descrip.adjustsFontSizeToFitWidth = true
         title.text = eventInfo["title"].stringValue
-        descrip.text = eventInfo["location"].stringValue + " @ " + eventInfo["time"].stringValue
+        let time = eventInfo["time"].stringValue
+        let location = eventInfo["location"].stringValue
+        if(time == "00:00"){
+            descrip.text = "All Day @ " + location
+        } else{
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            let time12 = formatter.date(from: time) ?? Date()
+            formatter.dateFormat = "hh:mm a"
+            descrip.text = location + " @ " + formatter.string(from: time12)
+        }
         image.sd_setImage(with: imageRef)
     }
 }
