@@ -22,7 +22,7 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
     let eventStore = EKEventStore()
     var eventInfo = JSON()
     var date = Date()
-    var couponImageRef = StorageReference()
+    var couponRef = StorageReference()
     var isPDF = false
     
     override init(frame: CGRect) {
@@ -67,8 +67,7 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
             })
         case .fileView:
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "couponView") as! CouponVC
-            vc.couponImageRef = couponImageRef
-            vc.isPDF = isPDF
+            vc.couponRef = couponRef
             viewController.present(vc, animated: true, completion: nil)
         }
     }

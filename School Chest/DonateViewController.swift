@@ -7,30 +7,37 @@
 //
 
 import UIKit
-import WebKit
+import ChameleonFramework
 
-class DonateViewController: UIViewController, WKUIDelegate {
-    var webView: WKWebView!
+class DonateViewController: UIViewController{
+    @IBOutlet var button: UIButton!
+    let url = URL(string: "https://www.razoo.com/team/V8018g")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.definesPresentationContext = true
+        /*loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        loginButton.backgroundColor = [UIColor whiteColor];
+        loginButton.layer.borderColor = [UIColor blackColor].CGColor;
+        loginButton.layer.borderWidth = 0.5f;
+        loginButton.layer.cornerRadius = 10.0f;*/
         
-        let url = URL(string: "https://www.razoo.com/team/V8018g")
-        let req = URLRequest(url: url!)
-        webView.load(req)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = FlatPurple()
+        button.layer.cornerRadius = 10
+        
+        self.view.backgroundColor = GradientColor(.topToBottom, frame: self.view.frame, colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func donate(_ sender: Any) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func loadView() {
-        webView = WKWebView(frame: .zero)
-        webView.uiDelegate = self
-        webView.allowsBackForwardNavigationGestures = false
-        view = webView
     }
 
     /*

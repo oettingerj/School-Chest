@@ -13,7 +13,6 @@ class TabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers![1].view.setNeedsLayout()
         self.tabBar.unselectedItemTintColor = FlatBlack()
         // Do any additional setup after loading the view.
     }

@@ -18,8 +18,7 @@ class PopupViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var eventInfo: JSON = JSON()
     var date = Date()
-    var imageRef = Storage.storage().reference()
-    var isPDF = false
+    var pdfRef = Storage.storage().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +30,7 @@ class PopupViewController: UIViewController, UICollectionViewDataSource, UIColle
         eventDesc.text = eventInfo["description"].stringValue
         let fileName = eventInfo["coupon"].stringValue
         if(fileName != "none"){
-            let index = fileName.index(fileName.endIndex, offsetBy: -3)
-            if(fileName[index...] == "pdf"){
-                isPDF = true;
-            }
-            imageRef = imageRef.child("Event Coupons/" + fileName)
+            pdfRef = pdfRef.child("Event Coupons/" + fileName)
         }
         // Do any additional setup after loading the view.
     }
@@ -59,8 +54,7 @@ class PopupViewController: UIViewController, UICollectionViewDataSource, UIColle
         cell.viewController = self
         if(indexPath.item > 0){
             cell.buttonType = .fileView
-            cell.couponImageRef = imageRef
-            cell.isPDF = isPDF
+            cell.couponRef = pdfRef
         } else{
             cell.buttonType = .calendarExport
             cell.eventInfo = eventInfo
