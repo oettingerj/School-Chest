@@ -17,6 +17,7 @@
 		031EE3131F05DDC8009812CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 031EE3121F05DDC8009812CA /* GoogleService-Info.plist */; };
 		031EE3191F06D668009812CA /* TodayTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE3181F06D668009812CA /* TodayTVCell.swift */; };
 		037E18AD1FAAB8940083F26D /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E18AC1FAAB8940083F26D /* TabViewController.swift */; };
+		0387425E1FC75B2A00BDC8B1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0387425D1FC75B2A00BDC8B1 /* HomeViewController.swift */; };
 		039E100F1FABD3D40057D520 /* CouponVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E100E1FABD3D40057D520 /* CouponVC.swift */; };
 		03BC6F641FA176F300BFB7AE /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC6F631FA176F300BFB7AE /* DonateViewController.swift */; };
 		03FEAB281F2B8D3B009E580D /* TodayCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FEAB271F2B8D3B009E580D /* TodayCVCell.swift */; };
@@ -36,6 +37,7 @@
 		031EE3121F05DDC8009812CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		031EE3181F06D668009812CA /* TodayTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTVCell.swift; sourceTree = "<group>"; };
 		037E18AC1FAAB8940083F26D /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		0387425D1FC75B2A00BDC8B1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		039E100E1FABD3D40057D520 /* CouponVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponVC.swift; sourceTree = "<group>"; };
 		03BC6F631FA176F300BFB7AE /* DonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
 		03FEAB271F2B8D3B009E580D /* TodayCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCVCell.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				031EE3181F06D668009812CA /* TodayTVCell.swift */,
 				03FEAB271F2B8D3B009E580D /* TodayCVCell.swift */,
 				031EE3041F05DB30009812CA /* Main.storyboard */,
+				0387425D1FC75B2A00BDC8B1 /* HomeViewController.swift */,
 				039E100E1FABD3D40057D520 /* CouponVC.swift */,
 				03148C561FAB7FC000B8D91A /* OptionCell.swift */,
 				03148C541FAAC78200B8D91A /* PopupViewController.swift */,
@@ -273,6 +276,7 @@
 				031EE3031F05DB30009812CA /* TodayVC.swift in Sources */,
 				031EE3191F06D668009812CA /* TodayTVCell.swift in Sources */,
 				03FEAB281F2B8D3B009E580D /* TodayCVCell.swift in Sources */,
+				0387425E1FC75B2A00BDC8B1 /* HomeViewController.swift in Sources */,
 				03148C571FAB7FC000B8D91A /* OptionCell.swift in Sources */,
 				031EE3011F05DB30009812CA /* AppDelegate.swift in Sources */,
 				03BC6F641FA176F300BFB7AE /* DonateViewController.swift in Sources */,

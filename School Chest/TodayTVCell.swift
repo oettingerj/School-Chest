@@ -93,11 +93,9 @@ class TodayTVCell: UITableViewCell, UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = eventsCollection.dequeueReusableCell(withReuseIdentifier: "TodayCVCell", for: indexPath) as! TodayCVCell
-        cell.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: [UIColor.randomFlat, UIColor.randomFlat])
-        cell.title.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
-        cell.descrip.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
         cell.eventInfo = events["day\(row + 1)"]["events"]["event\(indexPath.item + 1)"]
         cell.setLabels()
+        cell.initCategoryItems()
         return cell
     }
 }

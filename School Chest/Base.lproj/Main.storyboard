@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Today-->
+        <!--Schedule-->
         <scene sceneID="nYI-cP-BK4">
             <objects>
-                <viewController id="4YA-fD-L1g" userLabel="Today" customClass="TodayVC" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4YA-fD-L1g" customClass="TodayVC" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bCV-ge-lOX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,21 +47,28 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="230" height="123"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="PbJ-uT-wSn">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="PbJ-uT-wSn">
                                                                         <rect key="frame" x="12" y="12" width="50" height="50"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="szS-k4-kS2">
-                                                                        <rect key="frame" x="75" y="13" width="135" height="47"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="szS-k4-kS2">
+                                                                        <rect key="frame" x="75" y="13" width="143" height="47"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time/Loc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="05a-wC-Hfs">
-                                                                        <rect key="frame" x="20" y="68" width="190" height="35"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="05a-wC-Hfs">
+                                                                        <rect key="frame" x="12" y="61" width="206" height="22"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g4A-Rq-ron">
+                                                                        <rect key="frame" x="12" y="84" width="206" height="26"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -69,8 +76,9 @@
                                                             </view>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <connections>
-                                                                <outlet property="descrip" destination="05a-wC-Hfs" id="q6K-rv-x8o"/>
                                                                 <outlet property="image" destination="PbJ-uT-wSn" id="sn1-5R-02R"/>
+                                                                <outlet property="location" destination="g4A-Rq-ron" id="QSr-Sf-43a"/>
+                                                                <outlet property="time" destination="05a-wC-Hfs" id="sNT-m8-z1h"/>
                                                                 <outlet property="title" destination="szS-k4-kS2" id="BCA-sk-coO"/>
                                                             </connections>
                                                         </collectionViewCell>
@@ -141,6 +149,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="khX-ns-5ny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="855.5" y="157.5"/>
+        </scene>
+        <!--Today-->
+        <scene sceneID="2V9-T5-UNs">
+            <objects>
+                <viewController id="RHU-14-M7l" customClass="HomeViewController" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3CG-by-kLv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tyf-i8-Rw7">
+                                <rect key="frame" x="16" y="20" width="343" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" misplaced="YES" id="R4Q-RF-jfU">
+                                <rect key="frame" x="16" y="69" width="343" height="71"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Today's Lunch:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S4r-v5-GaJ">
+                                        <rect key="frame" x="8" y="15" width="327" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="sNk-pT-zHt">
+                                <rect key="frame" x="16" y="191" width="343" height="404"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" editable="NO" id="ESs-lf-9rH">
+                                        <rect key="frame" x="8" y="12" width="327" height="384"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Announcements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fy5-Nx-hzu">
+                                <rect key="frame" x="16" y="151" width="221" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Today" image="home" id="DP0-6L-t1e"/>
+                    <connections>
+                        <outlet property="announcementsContainer" destination="sNk-pT-zHt" id="xbs-PS-eXK"/>
+                        <outlet property="announcementsView" destination="ESs-lf-9rH" id="4J1-Se-HVU"/>
+                        <outlet property="dateLabel" destination="Tyf-i8-Rw7" id="nrQ-P9-Ph5"/>
+                        <outlet property="lunchLabel" destination="S4r-v5-GaJ" id="Sl9-wS-A0l"/>
+                        <outlet property="lunchView" destination="R4Q-RF-jfU" id="Ak9-ST-1YM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Drk-mv-PGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3.5" y="157.5"/>
         </scene>
         <!--Popup View Controller-->
         <scene sceneID="dEa-YT-zg4">
@@ -265,17 +338,19 @@
                         <color key="barTintColor" red="0.51372549019607838" green="0.64313725490196072" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <segue destination="RHU-14-M7l" kind="relationship" relationship="viewControllers" id="drU-Zx-ANQ"/>
                         <segue destination="4YA-fD-L1g" kind="relationship" relationship="viewControllers" id="mug-XU-J25"/>
                         <segue destination="Ndm-3V-cRn" kind="relationship" relationship="viewControllers" id="t1H-cu-P1n"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fU5-11-u88" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-0.625" y="157.85666666666665"/>
+            <point key="canvasLocation" x="-426" y="158"/>
         </scene>
     </scenes>
     <resources>
         <image name="donate" width="23" height="30"/>
+        <image name="home" width="23" height="23"/>
         <image name="schedule" width="23" height="23"/>
     </resources>
 </document>

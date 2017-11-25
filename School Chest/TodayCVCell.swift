@@ -8,38 +8,98 @@
 
 import UIKit
 import SwiftyJSON
-import FirebaseStorage
-import FirebaseStorageUI
+import ChameleonFramework
 
 class TodayCVCell: UICollectionViewCell {
     @IBOutlet var image: UIImageView!
     @IBOutlet var title: UILabel!
-    @IBOutlet var descrip: UILabel!
+    @IBOutlet var time: UILabel!
+    @IBOutlet var location: UILabel!
     
     var eventInfo: JSON = JSON()
-    var imageRef = Storage.storage().reference()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        imageRef = imageRef.child("Event Icons/placeholder.png")
     }
     
     func setLabels(){
         title.adjustsFontSizeToFitWidth = true
-        descrip.adjustsFontSizeToFitWidth = true
+        time.adjustsFontSizeToFitWidth = true
+        location.adjustsFontSizeToFitWidth = true
         title.text = eventInfo["title"].stringValue
-        let time = eventInfo["time"].stringValue
-        let location = eventInfo["location"].stringValue
-        if(time == "00:00"){
-            descrip.text = "All Day @ " + location
+        let eventTime = eventInfo["time"].stringValue
+        let eventLoc = eventInfo["location"].stringValue
+        if(eventTime == "00:00"){
+            time.text = "All Day"
         } else{
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
-            let time12 = formatter.date(from: time) ?? Date()
+            let time12 = formatter.date(from: eventTime) ?? Date()
             formatter.dateFormat = "hh:mm a"
-            descrip.text = location + " @ " + formatter.string(from: time12)
+            time.text = formatter.string(from: time12)
         }
-        image.sd_setImage(with: imageRef)
+        location.text = eventLoc
+    }
+    
+    func initCategoryItems(){
+        let category = eventInfo["category"].stringValue
+        switch category{
+        case "portion":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatMint()))
+            image.image = #imageLiteral(resourceName: "portion")
+        case "fitness":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatRed()))
+            image.image = #imageLiteral(resourceName: "fitness")
+        case "announcement":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatSkyBlue()))
+            image.image = #imageLiteral(resourceName: "announcement")
+        case "test":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatSand()))
+            image.image = #imageLiteral(resourceName: "test")
+        case "bee":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatYellow()))
+            image.image = #imageLiteral(resourceName: "bee")
+        case "benefit":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatPurple()))
+            image.image = #imageLiteral(resourceName: "benefit")
+        case "run":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatNavyBlue()))
+            image.image = #imageLiteral(resourceName: "run")
+            image.image = image.image?.withRenderingMode(.alwaysTemplate)
+            image.tintColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
+        case "idol":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatBlue()))
+            image.image = #imageLiteral(resourceName: "idol")
+        case "food":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatCoffee()))
+            image.image = #imageLiteral(resourceName: "food")
+        case "warrior":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatBlack()))
+            image.image = #imageLiteral(resourceName: "warrior")
+            image.image = image.image?.withRenderingMode(.alwaysTemplate)
+            image.tintColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
+        case "hoops":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatOrange()))
+            image.image = #imageLiteral(resourceName: "basketball")
+        case "game":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatWatermelon()))
+            image.image = #imageLiteral(resourceName: "game")
+        case "fashion":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatPink()))
+            image.image = #imageLiteral(resourceName: "fashion")
+        case "movie":
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatWhiteDark()))
+            image.image = #imageLiteral(resourceName: "movie")
+        default:
+            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: UIColor.randomFlat))
+        }
+        
+        title.textColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
+        time.textColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
+        location.textColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
+    }
+    
+    func gradientFromColor(color: UIColor) -> [UIColor]{
+        return [color.darken(byPercentage: 0.1)!, color.lighten(byPercentage: 0.1)!]
     }
 }

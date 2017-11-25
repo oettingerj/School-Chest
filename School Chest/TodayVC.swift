@@ -17,6 +17,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var ref: DatabaseReference!
     var events: JSON = JSON()
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        return refreshControl
+    }()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,14 +30,12 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference()
+        eventTable.refreshControl = refreshControl
         
-        ref.child("calendar").observeSingleEvent(of: .value, with: { (snapshot) in
-            self.events = JSON(snapshot.value!)
-            self.eventTable.reloadData()
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        let defaults = UserDefaults.standard
+        events = JSON.init(parseJSON: defaults.object(forKey: "events") as! String)
+        
+        self.eventTable.reloadData()
         
         self.tabBarController?.tabBar.tintColor = UIColor.flatWhite
         
@@ -50,12 +53,27 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
     }
     
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        let defaults = UserDefaults.standard
+        let ref = Database.database().reference()
+        ref.child("calendar").observeSingleEvent(of: .value, with: { (snapshot) in
+            let json = JSON(snapshot.value!)
+            defaults.set(json.rawString(), forKey: "events")
+            self.events = json
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        self.eventTable.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return events.dictionary?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date = events["day\(section + 1)"]["date"].stringValue
+        var date = events["day\(section + 1)"]["date"].stringValue
         let today = Date()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
         let formatter = DateFormatter()
@@ -67,7 +85,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         } else if(date == tomorrowstr){
             return "Tomorrow"
         } else{
-            return date
+            date.append("/17")
+            formatter.dateFormat = "MM/dd/yy"
+            let eventDate = formatter.date(from: date)!
+            formatter.dateFormat = "EEEE MMM dd"
+            return formatter.string(from: eventDate)
         }
     }
     
