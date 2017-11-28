@@ -1,6 +1,0 @@
-framework module Pods_School_Chest {
-  umbrella header "Pods-School Chest-umbrella.h"
-
-  export *
-  module * { export * }
-}
