@@ -1,3 +1,8 @@
 *.png
 *.jpg
 /Pods/*
+*.xcodeproj
+*.xcworkspace
+*.lock
+.firebaserc
+*.psd
