@@ -58,28 +58,28 @@ class HomeViewController: UIViewController {
         dateLabel.text = formatter.string(from: todayDate)
         
         let ref = Database.database().reference()
-        var annString = ""
+        var annString: [String] = []
         ref.child("announcements").observeSingleEvent(of: .value, with: { (snapshot) in
             self.announcementList = JSON(snapshot.value!)
-            let bulletPoint: String = "\u{2022}"
             for (_, object) in self.announcementList{
-                let str = "\(bulletPoint) \(object.stringValue)\n"
-                annString.append(str)
+                annString.append(object.stringValue)
             }
             
-            self.announcementsView.text = annString
+            self.announcementsView.attributedText = self.bulletedList(strings: annString)
         })
         { (error) in
             print(error.localizedDescription)
         }
         
         self.view.backgroundColor = GradientColor(.topToBottom, frame: self.view.frame, colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
-        announcementsContainer.backgroundColor = GradientColor(.diagonal, frame: announcementsContainer.frame, colors: gradientFromColor(color: FlatWhite()))
         announcementsContainer.layer.cornerRadius = 5.0
+        //announcementsContainer.backgroundColor = GradientColor(.diagonal, frame: announcementsContainer.frame, colors: gradientFromColor(color: FlatWhite()))
+        announcementsContainer.backgroundColor = FlatWhite()
         announcementsView.textColor = ContrastColorOf(announcementsContainer.backgroundColor!, returnFlat: true)
         
-        lunchView.backgroundColor = GradientColor(.diagonal, frame: lunchView.frame, colors: gradientFromColor(color: FlatGreen()))
         lunchView.layer.cornerRadius = 5.0
+        //lunchView.backgroundColor = GradientColor(.diagonal, frame: lunchView.frame, colors: gradientFromColor(color: FlatGreen()))
+        lunchView.backgroundColor = FlatGreen()
         lunchLabel.textColor = ContrastColorOf(lunchView.backgroundColor!, returnFlat: true)
     }
     
@@ -90,6 +90,7 @@ class HomeViewController: UIViewController {
         paragraphStyle.defaultTabInterval = 15
         paragraphStyle.firstLineHeadIndent = 0
         paragraphStyle.headIndent = 15
+        paragraphStyle.lineSpacing = 2.0
         
         return paragraphStyle
     }
@@ -121,6 +122,8 @@ class HomeViewController: UIViewController {
         formatter.dateFormat = "MM/dd"
         var dayCount = 1
         
+        var closestDate = today
+        var retStr = ""
         while let day = iter.next(){
             let items = day.1
             dayCount += 1
@@ -133,15 +136,19 @@ class HomeViewController: UIViewController {
             mergedComponments.month = timeComponents.month
             mergedComponments.day = timeComponents.day
             dateVal = Calendar.current.date(from: mergedComponments) ?? dateVal
+            if(dateVal > today && closestDate <= today){
+                closestDate = dateVal
+            }
             
-            if(dateVal > today){
+            if(dateVal > today && dateVal < closestDate){
                 let lunch = items["lunch"].stringValue
                 if(lunch != ""){
-                    return items["lunch"].stringValue + " on " + date
+                    retStr = items["lunch"].stringValue + " on " + date
+                    closestDate = dateVal
                 }
             }
         }
-        return ""
+        return retStr
     }
 
     override func didReceiveMemoryWarning() {
@@ -149,6 +156,25 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func bulletedList(strings:[String]) -> NSAttributedString {
+        let textAttributesDictionary = [NSAttributedStringKey.font : announcementsView.font!, NSAttributedStringKey.foregroundColor: UIColor.black] as [NSAttributedStringKey : Any]
+        
+        let fullAttributedString = NSMutableAttributedString()
+        
+        for string: String in strings
+        {
+            let bulletPoint: String = "\u{2022}"
+            let formattedString: String = "\(bulletPoint) \(string)\n"
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
+            let paragraphStyle = createParagraphAttribute()
+            
+            attributedString.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle], range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttributes(textAttributesDictionary, range: NSMakeRange(0, attributedString.length))
+            
+            fullAttributedString.append(attributedString)
+        }
+        return fullAttributedString
+    }
 
     /*
     // MARK: - Navigation

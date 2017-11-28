@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftyJSON
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
+        { (granted, error) in
+            if granted == true{
+                NSLog("Granted")
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+            if let error = error {
+                NSLog("Error: \(error.localizedDescription)")
+            }
+        }
         return true
     }
 

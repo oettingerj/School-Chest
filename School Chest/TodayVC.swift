@@ -81,6 +81,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         let todaystr = formatter.string(from: today)
         let tomorrowstr = formatter.string(from: tomorrow!)
         if(date == todaystr){
+            tableView.scrollToRow(at: IndexPath(item: 0, section: section) , at: UITableViewScrollPosition.top, animated: true)
             return "Today"
         } else if(date == tomorrowstr){
             return "Tomorrow"

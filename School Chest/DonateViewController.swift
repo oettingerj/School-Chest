@@ -16,16 +16,11 @@ class DonateViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
-        /*loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        loginButton.backgroundColor = [UIColor whiteColor];
-        loginButton.layer.borderColor = [UIColor blackColor].CGColor;
-        loginButton.layer.borderWidth = 0.5f;
-        loginButton.layer.cornerRadius = 10.0f;*/
         
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = FlatPurple()
         button.layer.cornerRadius = 10
+        button.isUserInteractionEnabled = true
         
         self.view.backgroundColor = GradientColor(.topToBottom, frame: self.view.frame, colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
         // Do any additional setup after loading the view.
