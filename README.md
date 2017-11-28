@@ -3,7 +3,7 @@
 This app was developed in 2017 by Josh Oettinger for Deerfield High School's annual charity fundraiser.
 
 ### How it works
-The app gets all its information (Event info, lunches, announcements, coupons) from a Google Firebase server. If you need access to this server, contact Josh Oettinger (`joshkyle98@gmail.com`).
+The app gets all its information (Event info, lunches, announcements, coupons) from a Google Firebase server. If you need access to this server, contact Josh Oettinger (<mailto:joshkyle98@gmail.com>).
 
 
  ### Build Instructions
