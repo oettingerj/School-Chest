@@ -3,7 +3,7 @@ DHS School Chest App
 
 This app was developed in 2017 by Josh Oettinger for Deerfield High School's annual charity fundraiser.
 
-### [View in App Store](https://github.com/oettingerj/School-Chest.git "School Chest")
+### [View in App Store](https://itunes.apple.com/us/app/dhs-school-chest/id1312538858?ls=1&mt=8 "School Chest")
 
 ---
 
