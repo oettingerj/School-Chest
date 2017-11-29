@@ -9,7 +9,7 @@
 import UIKit
 import ChameleonFramework
 
-class DonateViewController: UIViewController{
+class DonateViewController: UIViewController {
     @IBOutlet var button: UIButton!
     let url = URL(string: "https://www.razoo.com/team/V8018g")!
     
@@ -22,7 +22,9 @@ class DonateViewController: UIViewController{
         button.layer.cornerRadius = 10
         button.isUserInteractionEnabled = true
         
-        self.view.backgroundColor = GradientColor(.topToBottom, frame: self.view.frame, colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
+        self.view.backgroundColor = GradientColor(.topToBottom,
+                                                  frame: self.view.frame,
+                                                  colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
         // Do any additional setup after loading the view.
     }
     

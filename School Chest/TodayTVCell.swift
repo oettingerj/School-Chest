@@ -11,8 +11,9 @@ import Firebase
 import ChameleonFramework
 import SwiftyJSON
 import Presentr
+import SwifterSwift
 
-class TodayTVCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate{
+class TodayTVCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet var eventsCollection: UICollectionView!
     
@@ -31,6 +32,7 @@ class TodayTVCell: UITableViewCell, UICollectionViewDataSource, UICollectionView
         presenter.dismissOnSwipe = true
         presenter.blurBackground = true
         presenter.blurStyle = .regular
+        presenter.presentationType = .bottomHalf
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(gesture:)))
         tap.numberOfTapsRequired = 1
@@ -51,37 +53,35 @@ class TodayTVCell: UITableViewCell, UICollectionViewDataSource, UICollectionView
         // Configure the view for the selected state
     }
     
-    func combineDateAndTime(eventTime: String){
+    func combineDateAndTime(eventTime: String) {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        let time = formatter.date(from: eventTime)
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.month, .day], from: date)
-        let timeComponents = calendar.dateComponents([.hour, .minute], from: time ?? Date())
+        let time = formatter.date(from: eventTime) ?? Date()
         
-        var mergedComponments = DateComponents()
-        mergedComponments.year = Calendar.current.component(.year, from: Date())
-        mergedComponments.month = dateComponents.month
-        mergedComponments.day = dateComponents.day
-        mergedComponments.hour = timeComponents.hour
-        mergedComponments.minute = timeComponents.minute
-        date = calendar.date(from: mergedComponments) ?? date
+        date.year = Date().year
+        date.hour = time.hour
+        date.minute = time.minute
     }
     
-    @objc func didTap(gesture: UITapGestureRecognizer){
+    @objc func didTap(gesture: UITapGestureRecognizer) {
         let pointInCollectionView = gesture.location(in: self.eventsCollection)
         let selectedIndexPath = self.eventsCollection.indexPathForItem(at: pointInCollectionView)
-        let tvCell = self.eventsCollection.cellForItem(at: selectedIndexPath!) as! TodayCVCell
-        
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "popup") as! PopupViewController
-        vc.eventInfo = tvCell.eventInfo
-        combineDateAndTime(eventTime: vc.eventInfo["time"].stringValue)
-        vc.date = date
-        viewController!.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+        if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "popup") as? PopupViewController {
+            if let tvCell = self.eventsCollection.cellForItem(at: selectedIndexPath!) as? TodayCVCell {
+                vc.eventInfo = tvCell.eventInfo
+                combineDateAndTime(eventTime: vc.eventInfo["time"].stringValue)
+                vc.date = date
+                
+                viewController!.customPresentViewController(presenter,
+                                                            viewController: vc,
+                                                            animated: true,
+                                                            completion: nil)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(events.dictionary != nil){
+        if events.dictionary != nil {
             return events["day\(row + 1)"]["events"].count
         }
         return 0
@@ -91,11 +91,14 @@ class TodayTVCell: UITableViewCell, UICollectionViewDataSource, UICollectionView
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = eventsCollection.dequeueReusableCell(withReuseIdentifier: "TodayCVCell", for: indexPath) as! TodayCVCell
-        cell.eventInfo = events["day\(row + 1)"]["events"]["event\(indexPath.item + 1)"]
-        cell.setLabels()
-        cell.initCategoryItems()
-        return cell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = eventsCollection.dequeueReusableCell(withReuseIdentifier: "TodayCVCell", for: indexPath) as? TodayCVCell {
+            cell.eventInfo = events["day\(row + 1)"]["events"]["event\(indexPath.item + 1)"]
+            cell.setLabels()
+            cell.initCategoryItems()
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }

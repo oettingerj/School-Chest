@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 import FirebaseStorage
-import FirebaseStorageUI
 
 class PopupViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet var buttonCollection: UICollectionView!
@@ -25,11 +24,11 @@ class PopupViewController: UIViewController, UICollectionViewDataSource, UIColle
         buttonCollection.dataSource = self
         buttonCollection.delegate = self
         
-        eventTitle.adjustsFontSizeToFitWidth = true;
+        eventTitle.adjustsFontSizeToFitWidth = true
         eventTitle.text = eventInfo["title"].stringValue
         eventDesc.text = eventInfo["description"].stringValue
         let fileName = eventInfo["coupon"].stringValue
-        if(fileName != "none"){
+        if fileName != "none" {
             pdfRef = pdfRef.child("Event Coupons/" + fileName)
         }
         // Do any additional setup after loading the view.
@@ -41,27 +40,31 @@ class PopupViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(eventInfo["coupon"].stringValue != "none"){
+        if eventInfo["coupon"].stringValue != "none" {
             return 2
-        } else{
+        } else {
             return 1
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = buttonCollection.dequeueReusableCell(withReuseIdentifier: "OptionCell", for: indexPath) as! OptionCell
-        cell.layer.cornerRadius = 5.0
-        cell.viewController = self
-        if(indexPath.item > 0){
-            cell.buttonType = .fileView
-            cell.couponRef = pdfRef
-        } else{
-            cell.buttonType = .calendarExport
-            cell.eventInfo = eventInfo
-            cell.date = date
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = buttonCollection.dequeueReusableCell(withReuseIdentifier: "OptionCell", for: indexPath) as? OptionCell {
+            cell.layer.cornerRadius = 5.0
+            cell.viewController = self
+            if indexPath.item > 0 {
+                cell.buttonType = .fileView
+                cell.couponRef = pdfRef
+            } else {
+                cell.buttonType = .calendarExport
+                cell.eventInfo = eventInfo
+                cell.date = date
+            }
+            cell.setup()
+            return cell
+        } else {
+            return UICollectionViewCell()
         }
-        cell.setup()
-        return cell
     }
 
     /*

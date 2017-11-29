@@ -22,16 +22,16 @@ class TodayCVCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func setLabels(){
+    func setLabels() {
         title.adjustsFontSizeToFitWidth = true
         time.adjustsFontSizeToFitWidth = true
         location.adjustsFontSizeToFitWidth = true
         title.text = eventInfo["title"].stringValue
         let eventTime = eventInfo["time"].stringValue
         let eventLoc = eventInfo["location"].stringValue
-        if(eventTime == "00:00"){
+        if eventTime == "00:00" {
             time.text = "All Day"
-        } else{
+        } else {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
             let time12 = formatter.date(from: eventTime) ?? Date()
@@ -41,57 +41,87 @@ class TodayCVCell: UICollectionViewCell {
         location.text = eventLoc
     }
     
-    func initCategoryItems(){
+    func initCategoryItems() {
         let category = eventInfo["category"].stringValue
-        switch category{
+        switch category {
         case "portion":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatMint()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatMint()))
             image.image = #imageLiteral(resourceName: "portion")
         case "fitness":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatRed()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatRed()))
             image.image = #imageLiteral(resourceName: "fitness")
         case "announcement":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatSkyBlue()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatSkyBlue()))
             image.image = #imageLiteral(resourceName: "announcement")
         case "test":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatSand()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatSand()))
             image.image = #imageLiteral(resourceName: "test")
         case "bee":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatYellow()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatYellow()))
             image.image = #imageLiteral(resourceName: "bee")
         case "benefit":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatPurple()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatPurple()))
             image.image = #imageLiteral(resourceName: "benefit")
         case "run":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatNavyBlue()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatNavyBlue()))
             image.image = #imageLiteral(resourceName: "run")
             image.image = image.image?.withRenderingMode(.alwaysTemplate)
             image.tintColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
         case "idol":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatBlue()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatBlue()))
             image.image = #imageLiteral(resourceName: "idol")
         case "food":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatCoffee()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatCoffee()))
             image.image = #imageLiteral(resourceName: "food")
         case "warrior":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatBlack()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatBlack()))
             image.image = #imageLiteral(resourceName: "warrior")
             image.image = image.image?.withRenderingMode(.alwaysTemplate)
             image.tintColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
         case "hoops":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatOrange()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatOrange()))
             image.image = #imageLiteral(resourceName: "basketball")
         case "game":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatWatermelon()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatWatermelon()))
             image.image = #imageLiteral(resourceName: "game")
         case "fashion":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatPink()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatPink()))
             image.image = #imageLiteral(resourceName: "fashion")
         case "movie":
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: FlatWhiteDark()))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: FlatWhiteDark()))
             image.image = #imageLiteral(resourceName: "movie")
         default:
-            self.backgroundColor = GradientColor(.diagonal, frame: self.frame, colors: gradientFromColor(color: UIColor.randomFlat))
+            self.backgroundColor = GradientColor(.diagonal,
+                                                 frame: self.frame,
+                                                 colors: gradientFromColor(color: UIColor.randomFlat))
         }
         
         title.textColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
@@ -99,7 +129,7 @@ class TodayCVCell: UICollectionViewCell {
         location.textColor = ContrastColorOf(self.backgroundColor!, returnFlat: true)
     }
     
-    func gradientFromColor(color: UIColor) -> [UIColor]{
+    func gradientFromColor(color: UIColor) -> [UIColor] {
         return [color.darken(byPercentage: 0.1)!, color.lighten(byPercentage: 0.1)!]
     }
 }

@@ -10,8 +10,9 @@ target 'School Chest' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
-  pod 'FirebaseUI/Storage'
   pod 'SwiftyJSON'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'Presentr'
+  pod 'SwiftLint'
+  pod 'SwifterSwift'
 end

@@ -11,7 +11,7 @@ import Firebase
 import SwiftyJSON
 import ChameleonFramework
 
-class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var eventTable: UITableView!
     
@@ -33,7 +33,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         eventTable.refreshControl = refreshControl
         
         let defaults = UserDefaults.standard
-        events = JSON.init(parseJSON: defaults.object(forKey: "events") as! String)
+        events = JSON.init(parseJSON: defaults.object(forKey: "events") as? String ?? "")
         
         self.eventTable.reloadData()
         
@@ -45,8 +45,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         eventTable.sectionHeaderHeight = 20
         eventTable.sectionFooterHeight = 20
         
-        self.view.backgroundColor = GradientColor(.topToBottom, frame: self.view.frame, colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = GradientColor(.topToBottom,
+                                                  frame: self.view.frame,
+                                                  colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,12 +81,14 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         formatter.dateFormat = "MM/dd"
         let todaystr = formatter.string(from: today)
         let tomorrowstr = formatter.string(from: tomorrow!)
-        if(date == todaystr){
-            tableView.scrollToRow(at: IndexPath(item: 0, section: section) , at: UITableViewScrollPosition.top, animated: true)
+        if date == todaystr {
+            tableView.scrollToRow(at: IndexPath(item: 0, section: section),
+                                  at: UITableViewScrollPosition.top,
+                                  animated: true)
             return "Today"
-        } else if(date == tomorrowstr){
+        } else if date == tomorrowstr {
             return "Tomorrow"
-        } else{
+        } else {
             date.append("/17")
             formatter.dateFormat = "MM/dd/yy"
             let eventDate = formatter.date(from: date)!
@@ -99,22 +102,26 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventTable.dequeueReusableCell(withIdentifier: "TodayTVCell")! as! TodayTVCell
-        cell.viewController = self
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd"
-        cell.date = formatter.date(from: events["day\(indexPath.section + 1)"]["date"].stringValue) ?? Date()
-        cell.events = events
-        cell.row = indexPath.section
-        cell.eventsCollection.reloadData()
-        return cell
+        if let cell = eventTable.dequeueReusableCell(withIdentifier: "TodayTVCell")! as? TodayTVCell {
+            cell.viewController = self
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd"
+            cell.date = formatter.date(from: events["day\(indexPath.section + 1)"]["date"].stringValue) ?? Date()
+            cell.events = events
+            cell.row = indexPath.section
+            cell.eventsCollection.reloadData()
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.clear
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = FlatBlack()
-        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel?.textColor = FlatBlack()
+            header.textLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -125,7 +132,4 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

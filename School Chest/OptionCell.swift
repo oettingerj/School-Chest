@@ -12,7 +12,6 @@ import EventKitUI
 import SwiftyJSON
 import ChameleonFramework
 import FirebaseStorage
-import FirebaseStorageUI
 
 class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
     @IBOutlet var button: UIButton!
@@ -29,9 +28,10 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
         super.init(frame: frame)
     }
     
-    func setup(){
+    func setup() {
         button.titleLabel!.adjustsFontSizeToFitWidth = true
-        switch buttonType{
+        button.titleLabel?.textAlignment = NSTextAlignment.center
+        switch buttonType {
         case .calendarExport:
             button.setTitle("Export to Calendar", for: .normal)
             self.backgroundColor = FlatMint()
@@ -66,9 +66,10 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
                 }
             })
         case .fileView:
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "couponView") as! CouponVC
-            vc.couponRef = couponRef
-            viewController.present(vc, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "couponView") as? CouponVC {
+                vc.couponRef = couponRef
+                viewController.present(vc, animated: true, completion: nil)
+            }
         }
     }
     
@@ -76,7 +77,7 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
     
-    enum ButtonType{
+    enum ButtonType {
         case calendarExport
         case fileView
     }
