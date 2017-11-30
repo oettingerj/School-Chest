@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Request ability to send notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if granted == true {
-                UIApplication.shared.registerForRemoteNotifications()
+                DispatchQueue.main.async(execute: {
+                    UIApplication.shared.registerForRemoteNotifications()
+                })
             }
             if let error = error {
                 NSLog("Error: \(error.localizedDescription)")

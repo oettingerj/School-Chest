@@ -40,7 +40,7 @@ class HomeVC: UIViewController {
                     self.lunchLabel.text = "Next Lunch: " + self.getNextLunch()
                 }
             }) { (error) in
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
         } else {
             events = JSON.init(parseJSON: defaults.object(forKey: "events") as? String ?? "")
@@ -58,18 +58,7 @@ class HomeVC: UIViewController {
         formatter.dateFormat = "EEEE MMM dd"
         dateLabel.text = formatter.string(from: todayDate)
         
-        let ref = Database.database().reference()
-        var annString: [String] = []
-        ref.child("announcements").observeSingleEvent(of: .value, with: { (snapshot) in
-            self.announcementList = JSON(snapshot.value!)
-            for (_, object) in self.announcementList {
-                annString.append(object.stringValue)
-            }
-            
-            self.announcementsView.attributedText = self.bulletedList(strings: annString)
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        buildAnnouncements()
         
         self.view.backgroundColor = GradientColor(.topToBottom,
                                                   frame: self.view.frame,
@@ -84,18 +73,31 @@ class HomeVC: UIViewController {
         lunchLabel.textColor = ContrastColorOf(lunchView.backgroundColor!, returnFlat: true)
     }
     
-    func createParagraphAttribute() -> NSParagraphStyle {
-        var paragraphStyle: NSMutableParagraphStyle
-        paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
-        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left,
-                                             location: 15,
-                                             options: NSDictionary() as? [NSTextTab.OptionKey: Any] ?? [:])]
-        paragraphStyle.defaultTabInterval = 15
-        paragraphStyle.firstLineHeadIndent = 0
-        paragraphStyle.headIndent = 15
-        paragraphStyle.lineSpacing = 2.0
-        
-        return paragraphStyle
+    func buildAnnouncements() {
+        let ref = Database.database().reference()
+        var annString: [NSMutableAttributedString] = []
+        ref.child("announcements").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.announcementList = JSON(snapshot.value!)
+            for (_, object) in self.announcementList {
+                annString.append(NSMutableAttributedString(string: object.stringValue))
+            }
+            
+            ref.child("links").observeSingleEvent(of: .value, with: { (snapshot) in
+                let links = JSON(snapshot.value!)
+                for (_, object) in links {
+                    let title = object["title"].stringValue
+                    let url = URL(string: object["url"].stringValue) ?? URL(string: "http://www.schoolchest.org")
+                    let link = NSMutableAttributedString(string: title)
+                    link.addAttribute(NSAttributedStringKey.link, value: url as Any, range: NSRange(location: 0, length: link.length))
+                    annString.append(link)
+                }
+                self.announcementsView.attributedText = self.bulletedList(strings: annString)
+            }) { (error) in
+                NSLog(error.localizedDescription)
+            }
+        }) { (error) in
+            NSLog(error.localizedDescription)
+        }
     }
     
     func gradientFromColor(color: UIColor) -> [UIColor] {
@@ -154,16 +156,15 @@ class HomeVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func bulletedList(strings: [String]) -> NSAttributedString {
+    func bulletedList(strings: [NSMutableAttributedString]) -> NSAttributedString {
         let textAttributesDictionary = [NSAttributedStringKey.font: announcementsView.font!,
                                         NSAttributedStringKey.foregroundColor: UIColor.black] as [NSAttributedStringKey: Any]
         
         let fullAttributedString = NSMutableAttributedString()
         
-        for string: String in strings {
-            let bulletPoint: String = "\u{2022}"
-            let formattedString: String = "\(bulletPoint) \(string)\n"
-            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
+        for string: NSMutableAttributedString in strings {
+            let bulletPoint = NSMutableAttributedString(string: "\u{2022}")
+            let attributedString = NSMutableAttributedString(attributedString: bulletPoint + " " + string + "\n")
             let paragraphStyle = createParagraphAttribute()
             
             attributedString.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
@@ -174,5 +175,19 @@ class HomeVC: UIViewController {
             fullAttributedString.append(attributedString)
         }
         return fullAttributedString
+    }
+    
+    func createParagraphAttribute() -> NSParagraphStyle {
+        var paragraphStyle: NSMutableParagraphStyle
+        paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left,
+                                             location: 15,
+                                             options: NSDictionary() as? [NSTextTab.OptionKey: Any] ?? [:])]
+        paragraphStyle.defaultTabInterval = 15
+        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.headIndent = 15
+        paragraphStyle.lineSpacing = 2.0
+        
+        return paragraphStyle
     }
 }
