@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="FnL-OF-pvp">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -151,7 +147,7 @@
         <!--Donate-->
         <scene sceneID="YC2-Ok-Vub">
             <objects>
-                <viewController id="Ndm-3V-cRn" customClass="DonateViewController" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ndm-3V-cRn" customClass="DonateVC" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cNd-xu-VjD"/>
                         <viewControllerLayoutGuide type="bottom" id="HrV-AR-Wcj"/>
@@ -196,7 +192,7 @@
         <!--Today-->
         <scene sceneID="2V9-T5-UNs">
             <objects>
-                <viewController id="RHU-14-M7l" customClass="HomeViewController" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RHU-14-M7l" customClass="HomeVC" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YAa-dP-cqK"/>
                         <viewControllerLayoutGuide type="bottom" id="FRg-Pe-H4c"/>
@@ -291,10 +287,10 @@
             </objects>
             <point key="canvasLocation" x="3.5" y="157.5"/>
         </scene>
-        <!--Popup View Controller-->
+        <!--PopupVC-->
         <scene sceneID="dEa-YT-zg4">
             <objects>
-                <viewController storyboardIdentifier="popup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ofy-4f-mXM" customClass="PopupViewController" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ofy-4f-mXM" customClass="PopupVC" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HoA-sf-uPF"/>
                         <viewControllerLayoutGuide type="bottom" id="RFa-PW-iWL"/>
@@ -444,10 +440,10 @@
             </objects>
             <point key="canvasLocation" x="1688.5" y="157.5"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--TabVC-->
         <scene sceneID="HD8-TX-qLb">
             <objects>
-                <tabBarController id="FnL-OF-pvp" customClass="TabViewController" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="FnL-OF-pvp" customClass="TabVC" customModule="School_Chest" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="1nI-wh-Shy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

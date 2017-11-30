@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import FirebaseStorage
 
-class PopupViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class PopupVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet var buttonCollection: UICollectionView!
     @IBOutlet var eventTitle: UILabel!
     @IBOutlet var eventDesc: UITextView!

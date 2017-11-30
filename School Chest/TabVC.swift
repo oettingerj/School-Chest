@@ -9,7 +9,7 @@
 import UIKit
 import ChameleonFramework
 
-class TabViewController: UITabBarController {
+class TabVC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

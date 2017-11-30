@@ -12,7 +12,7 @@ import SwiftyJSON
 import ChameleonFramework
 import SwifterSwift
 
-class HomeViewController: UIViewController {
+class HomeVC: UIViewController {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var lunchLabel: UILabel!
     @IBOutlet var announcementsView: UITextView!

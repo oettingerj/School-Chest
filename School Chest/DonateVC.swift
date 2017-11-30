@@ -9,7 +9,7 @@
 import UIKit
 import ChameleonFramework
 
-class DonateViewController: UIViewController {
+class DonateVC: UIViewController {
     @IBOutlet var button: UIButton!
     let url = URL(string: "https://www.razoo.com/team/V8018g")!
     
