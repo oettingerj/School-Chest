@@ -32,25 +32,18 @@ class TodayTVCell: UITableViewCell, UICollectionViewDataSource, UICollectionView
         presenter.dismissOnSwipe = true
         presenter.blurBackground = true
         presenter.blurStyle = .regular
-        presenter.presentationType = .bottomHalf
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(gesture:)))
         tap.numberOfTapsRequired = 1
         eventsCollection.addGestureRecognizer(tap)
-        
-        // Initialization code
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        //contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(10, 10, 10, 10))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func combineDateAndTime(eventTime: String) {

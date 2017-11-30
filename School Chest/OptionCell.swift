@@ -12,6 +12,7 @@ import EventKitUI
 import SwiftyJSON
 import ChameleonFramework
 import FirebaseStorage
+import Presentr
 
 class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
     @IBOutlet var button: UIButton!
@@ -23,6 +24,8 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
     var date = Date()
     var couponRef = StorageReference()
     var isPDF = false
+    
+    let presenter = Presentr(presentationType: .fullScreen)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +48,7 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        presenter.transitionType = TransitionType.coverVertical
     }
     
     @IBAction func buttonPress(_ sender: UIButton) {
@@ -62,14 +66,18 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
                     controller.event = event
                     controller.eventStore = self.eventStore
                     controller.editViewDelegate = self
-                    self.viewController.present(controller, animated: true)
+                    self.viewController.customPresentViewController(self.presenter,
+                                                                    viewController: controller,
+                                                                    animated: true, completion: nil)
                 }
             })
         case .fileView:
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             if let vc = storyboard.instantiateViewController(withIdentifier: "couponView") as? CouponVC {
                 vc.couponRef = couponRef
-                viewController.present(vc, animated: true, completion: nil)
+                self.viewController.customPresentViewController(self.presenter,
+                                                                viewController: vc,
+                                                                animated: true, completion: nil)
             }
         }
     }

@@ -25,7 +25,6 @@ class DonateVC: UIViewController {
         self.view.backgroundColor = GradientColor(.topToBottom,
                                                   frame: self.view.frame,
                                                   colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func donate(_ sender: Any) {
@@ -36,15 +35,4 @@ class DonateVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
