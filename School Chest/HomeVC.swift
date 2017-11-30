@@ -73,7 +73,8 @@ class HomeVC: UIViewController {
         
         self.view.backgroundColor = GradientColor(.topToBottom,
                                                   frame: self.view.frame,
-                                                  colors: [HexColor("B6FBFF") ?? FlatBlue(), HexColor("83A4D4") ?? FlatSkyBlue()])
+                                                  colors: [HexColor("B6FBFF") ?? FlatBlue(),
+                                                           HexColor("83A4D4") ?? FlatSkyBlue()])
         announcementsContainer.layer.cornerRadius = 5.0
         announcementsContainer.backgroundColor = FlatWhite()
         announcementsView.textColor = ContrastColorOf(announcementsContainer.backgroundColor!, returnFlat: true)
@@ -166,9 +167,9 @@ class HomeVC: UIViewController {
             let paragraphStyle = createParagraphAttribute()
             
             attributedString.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
-                                           range: NSMakeRange(0, attributedString.length))
+                                           range: NSRange(location: 0, length: attributedString.length))
             attributedString.addAttributes(textAttributesDictionary,
-                                           range: NSMakeRange(0, attributedString.length))
+                                           range: NSRange(location: 0, length: attributedString.length))
             
             fullAttributedString.append(attributedString)
         }

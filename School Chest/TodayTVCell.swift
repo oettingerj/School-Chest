@@ -66,7 +66,8 @@ class TodayTVCell: UITableViewCell, UICollectionViewDataSource, UICollectionView
     @objc func didTap(gesture: UITapGestureRecognizer) {
         let pointInCollectionView = gesture.location(in: self.eventsCollection)
         let selectedIndexPath = self.eventsCollection.indexPathForItem(at: pointInCollectionView)
-        if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "popup") as? PopupVC {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "popup") as? PopupVC {
             if let tvCell = self.eventsCollection.cellForItem(at: selectedIndexPath!) as? TodayCVCell {
                 vc.eventInfo = tvCell.eventInfo
                 combineDateAndTime(eventTime: vc.eventInfo["time"].stringValue)

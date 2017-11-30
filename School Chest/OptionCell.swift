@@ -66,14 +66,16 @@ class OptionCell: UICollectionViewCell, EKEventEditViewDelegate {
                 }
             })
         case .fileView:
-            if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "couponView") as? CouponVC {
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "couponView") as? CouponVC {
                 vc.couponRef = couponRef
                 viewController.present(vc, animated: true, completion: nil)
             }
         }
     }
     
-    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+    func eventEditViewController(_ controller: EKEventEditViewController,
+                                 didCompleteWith action: EKEventEditViewAction) {
         controller.dismiss(animated: true, completion: nil)
     }
     
