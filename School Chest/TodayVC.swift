@@ -17,6 +17,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var ref: DatabaseReference!
     var events: JSON = JSON()
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
@@ -51,7 +52,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        for i in 0...((events.dictionary?.count ?? 1) - 1) {
+            tableView(eventTable, titleForHeaderInSection: i)
+        }
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
@@ -91,7 +94,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else {
             date.append("/17")
             formatter.dateFormat = "MM/dd/yy"
-            let eventDate = formatter.date(from: date)!
+            let eventDate = formatter.date(from: date) ?? Date()
             formatter.dateFormat = "EEEE MMM dd"
             return formatter.string(from: eventDate)
         }
