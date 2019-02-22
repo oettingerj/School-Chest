@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="FnL-OF-pvp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="FnL-OF-pvp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -50,7 +49,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="230" height="123"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PbJ-uT-wSn">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PbJ-uT-wSn">
                                                                         <rect key="frame" x="12" y="12" width="50" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="50" id="UYe-ed-5Ed"/>
@@ -68,7 +67,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4A-Rq-ron">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4A-Rq-ron">
                                                                         <rect key="frame" x="12" y="84" width="206" height="26"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="26" id="eEB-g6-5GK"/>
@@ -146,7 +145,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="433.5" y="157.5"/>
+            <point key="canvasLocation" x="693.60000000000002" y="141.67916041979012"/>
         </scene>
         <!--Donate-->
         <scene sceneID="YC2-Ok-Vub">
@@ -161,15 +160,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFy-MQ-Qq5">
-                                <rect key="frame" x="95" y="312" width="185" height="44"/>
+                                <rect key="frame" x="95" y="311.5" width="185" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <state key="normal" title="Donate"/>
                                 <connections>
                                     <action selector="donate:" destination="Ndm-3V-cRn" eventType="touchUpInside" id="Bal-ya-bhj"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="You can donate to CURED through the Razoo website." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZK-pD-96v">
-                                <rect key="frame" x="67" y="96" width="240" height="106"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="You can donate to Michael Matters through the Mighty Cause website." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZK-pD-96v">
+                                <rect key="frame" x="67" y="96" width="241" height="135.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -191,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="khX-ns-5ny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855.5" y="157.5"/>
+            <point key="canvasLocation" x="1368.8" y="141.67916041979012"/>
         </scene>
         <!--Today-->
         <scene sceneID="2V9-T5-UNs">
@@ -289,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Drk-mv-PGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3.5" y="157.5"/>
+            <point key="canvasLocation" x="5.5999999999999996" y="141.67916041979012"/>
         </scene>
         <!--PopupVC-->
         <scene sceneID="dEa-YT-zg4">
@@ -321,7 +320,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1RK-yQ-bGA">
-                                                    <rect key="frame" x="13" y="20" width="89" height="75"/>
+                                                    <rect key="frame" x="13" y="40" width="89" height="35"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="buttonPress:" destination="mUG-Cv-OVp" eventType="touchUpInside" id="NKj-28-QTJ"/>
@@ -351,7 +350,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="1QJ-w2-ess">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="1QJ-w2-ess">
                                 <rect key="frame" x="16" y="99" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -384,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNI-iO-Mbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1274.5" y="157.5"/>
+            <point key="canvasLocation" x="2039.2" y="141.67916041979012"/>
         </scene>
         <!--CouponVC-->
         <scene sceneID="nk2-zx-bxn">
@@ -399,7 +398,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aK7-vT-ejs">
-                                <rect key="frame" x="293" y="20" width="66" height="38"/>
+                                <rect key="frame" x="294" y="20" width="65" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -407,7 +406,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izC-hz-pUQ">
-                                <rect key="frame" x="89" y="20" width="196" height="38"/>
+                                <rect key="frame" x="89" y="20" width="197" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="9Lc-0n-lT8"/>
                                 </constraints>
@@ -442,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2uk-aD-z7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688.5" y="157.5"/>
+            <point key="canvasLocation" x="2701.5999999999999" y="141.67916041979012"/>
         </scene>
         <!--TabVC-->
         <scene sceneID="HD8-TX-qLb">
@@ -462,7 +461,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fU5-11-u88" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426" y="158"/>
+            <point key="canvasLocation" x="-681.60000000000002" y="142.1289355322339"/>
         </scene>
     </scenes>
     <resources>

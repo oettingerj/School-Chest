@@ -35,8 +35,15 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let defaults = UserDefaults.standard
         events = JSON.init(parseJSON: defaults.object(forKey: "events") as? String ?? "")
-        
-        self.eventTable.reloadData()
+        let ref = Database.database().reference()
+        ref.child("calendar").observeSingleEvent(of: .value, with: { (snapshot) in
+            let json = JSON(snapshot.value!)
+            defaults.set(json.rawString(), forKey: "events")
+            self.events = json
+            self.eventTable.reloadData()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
         self.tabBarController?.tabBar.tintColor = UIColor.flatWhite
         
@@ -50,10 +57,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                   frame: self.view.frame,
                                                   colors: [HexColor("B6FBFF")!, HexColor("83A4D4")!])
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        for i in 0...((events.dictionary?.count ?? 1) - 1) {
-            tableView(eventTable, titleForHeaderInSection: i)
+        for num in 0...((events.dictionary?.count ?? 1) - 1){
+
+            tableView(eventTable, titleForHeaderInSection: num)
         }
     }
     
@@ -64,12 +72,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let json = JSON(snapshot.value!)
             defaults.set(json.rawString(), forKey: "events")
             self.events = json
+            self.eventTable.reloadData()
+            refreshControl.endRefreshing()
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-        self.eventTable.reloadData()
-        refreshControl.endRefreshing()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,7 +99,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else if date == tomorrowstr {
             return "Tomorrow"
         } else {
-            date.append("/17")
+            date.append("/18")
             formatter.dateFormat = "MM/dd/yy"
             let eventDate = formatter.date(from: date) ?? Date()
             formatter.dateFormat = "EEEE MMM dd"

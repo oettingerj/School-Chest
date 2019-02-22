@@ -11,7 +11,7 @@ import ChameleonFramework
 
 class DonateVC: UIViewController {
     @IBOutlet var button: UIButton!
-    let url = URL(string: "https://www.razoo.com/team/V8018g")!
+    let url = URL(string: "https://www.mightycause.com/team/Schoolchest2018")!
     
     override func viewDidLoad() {
         super.viewDidLoad()

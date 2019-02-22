@@ -26,32 +26,49 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         
         let defaults = UserDefaults.standard
-        if defaults.object(forKey: "events") == nil {
-            let ref = Database.database().reference()
-            ref.child("calendar").observeSingleEvent(of: .value, with: { (snapshot) in
-                self.events = JSON(snapshot.value!)
-                defaults.set(self.events.rawString(), forKey: "events")
-                
-                let lunch = self.getLunch()
-                self.lunchLabel.adjustsFontSizeToFitWidth = true
-                if lunch != "" {
-                    self.lunchLabel.text = "Today's Lunch: " + lunch
-                } else {
-                    self.lunchLabel.text = "Next Lunch: " + self.getNextLunch()
-                }
-            }) { (error) in
-                NSLog(error.localizedDescription)
-            }
-        } else {
-            events = JSON.init(parseJSON: defaults.object(forKey: "events") as? String ?? "")
-            let lunch = getLunch()
-            lunchLabel.adjustsFontSizeToFitWidth = true
+        
+        let ref = Database.database().reference()
+        ref.child("calendar").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.events = JSON(snapshot.value!)
+            defaults.set(self.events.rawString(), forKey: "events")
+            
+            let lunch = self.getLunch()
+            self.lunchLabel.adjustsFontSizeToFitWidth = true
             if lunch != "" {
-                lunchLabel.text = "Today's Lunch: " + lunch
+                self.lunchLabel.text = "Today's Lunch: " + lunch
             } else {
-                lunchLabel.text = "Next Lunch: " + getNextLunch()
+                self.lunchLabel.text = "Next Lunch: " + self.getNextLunch()
             }
+        }) { (error) in
+            NSLog(error.localizedDescription)
         }
+        
+//        if defaults.object(forKey: "events") == nil {
+//            let ref = Database.database().reference()
+//            ref.child("calendar").observeSingleEvent(of: .value, with: { (snapshot) in
+//                self.events = JSON(snapshot.value!)
+//                defaults.set(self.events.rawString(), forKey: "events")
+//
+//                let lunch = self.getLunch()
+//                self.lunchLabel.adjustsFontSizeToFitWidth = true
+//                if lunch != "" {
+//                    self.lunchLabel.text = "Today's Lunch: " + lunch
+//                } else {
+//                    self.lunchLabel.text = "Next Lunch: " + self.getNextLunch()
+//                }
+//            }) { (error) in
+//                NSLog(error.localizedDescription)
+//            }
+//        } else {
+//            events = JSON.init(parseJSON: defaults.object(forKey: "events") as? String ?? "")
+//            let lunch = getLunch()
+//            lunchLabel.adjustsFontSizeToFitWidth = true
+//            if lunch != "" {
+//                lunchLabel.text = "Today's Lunch: " + lunch
+//            } else {
+//                lunchLabel.text = "Next Lunch: " + getNextLunch()
+//            }
+//        }
         
         let todayDate = Date()
         let formatter = DateFormatter()

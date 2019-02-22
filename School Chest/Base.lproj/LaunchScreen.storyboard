@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,50 +21,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="cwt-Ma-4ew">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand" translatesAutoresizingMaskIntoConstraints="NO" id="9J3-3P-RaX">
-                                <rect key="frame" x="67" y="175" width="240" height="241"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="241" id="7TJ-Cs-Ulf"/>
-                                    <constraint firstAttribute="width" secondItem="9J3-3P-RaX" secondAttribute="height" multiplier="240:241" id="BYY-rA-Otj"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DHS School Chest 2017: CURED" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PGP-oX-Oel">
-                                <rect key="frame" x="16" y="28" width="343" height="127"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="127" id="TrJ-Vs-5yD"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DHS School Chest 2018: Michael Matters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PGP-oX-Oel">
+                                <rect key="frame" x="17" y="12" width="341" height="161"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made with ♥ by Josh Oettinger" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRP-sk-xpZ">
-                                <rect key="frame" x="16" y="626" width="343" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="09p-lK-iav"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1528863096896" highlightedImage="1528863096896" translatesAutoresizingMaskIntoConstraints="NO" id="XMv-9Y-lkM">
+                                <rect key="frame" x="91" y="145" width="192" height="508"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.3790590653664816" blue="0.78663374352331605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="PGP-oX-Oel" firstAttribute="leading" secondItem="GRP-sk-xpZ" secondAttribute="leading" id="0Y4-ZJ-L3P"/>
-                            <constraint firstItem="cwt-Ma-4ew" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="3hT-8W-7Q9"/>
-                            <constraint firstItem="cwt-Ma-4ew" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="3ui-2T-GjF"/>
-                            <constraint firstItem="cwt-Ma-4ew" firstAttribute="centerX" secondItem="9J3-3P-RaX" secondAttribute="centerX" id="5Ye-QO-Md8"/>
-                            <constraint firstItem="cwt-Ma-4ew" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="7FT-yE-aq4"/>
-                            <constraint firstItem="9J3-3P-RaX" firstAttribute="top" secondItem="PGP-oX-Oel" secondAttribute="bottom" constant="20" id="7G5-kD-JeJ"/>
-                            <constraint firstItem="PGP-oX-Oel" firstAttribute="centerX" secondItem="9J3-3P-RaX" secondAttribute="centerX" id="9uX-PX-sVV"/>
-                            <constraint firstAttribute="bottom" secondItem="GRP-sk-xpZ" secondAttribute="bottom" constant="20" symbolic="YES" id="Aye-ac-YxB"/>
-                            <constraint firstItem="PGP-oX-Oel" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" symbolic="YES" id="DWe-cQ-X0k"/>
-                            <constraint firstItem="PGP-oX-Oel" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="E3D-PX-hK7"/>
-                            <constraint firstAttribute="trailing" secondItem="cwt-Ma-4ew" secondAttribute="trailing" id="QPe-kA-P0d"/>
-                            <constraint firstItem="9J3-3P-RaX" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="51" id="m3E-XY-tO1"/>
-                            <constraint firstItem="PGP-oX-Oel" firstAttribute="trailing" secondItem="GRP-sk-xpZ" secondAttribute="trailing" id="mvS-76-TCd"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PGP-oX-Oel" secondAttribute="bottom" constant="494" id="32b-UL-CIb"/>
+                            <constraint firstItem="XMv-9Y-lkM" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="75" id="HUg-7F-TSr"/>
+                            <constraint firstItem="XMv-9Y-lkM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QpY-eP-NaZ"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="XMv-9Y-lkM" secondAttribute="bottom" constant="14" id="RFd-WY-HJp"/>
+                            <constraint firstItem="XMv-9Y-lkM" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="125" id="ft0-2U-zHJ"/>
+                            <constraint firstItem="PGP-oX-Oel" firstAttribute="centerX" secondItem="XMv-9Y-lkM" secondAttribute="centerX" id="gxZ-Yu-Hg5"/>
+                            <constraint firstItem="PGP-oX-Oel" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="1" id="ic6-NB-hEa"/>
+                            <constraint firstItem="PGP-oX-Oel" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-8" id="lan-mE-Fn9"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -76,7 +51,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gradient" width="750" height="1334"/>
-        <image name="hand" width="375" height="389"/>
+        <image name="1528863096896" width="159" height="545"/>
     </resources>
 </document>
