@@ -1,1 +1,3 @@
-from josh import Queue;
+Queue = require { "./josh/queue" };
+
+console.log("IPO");
